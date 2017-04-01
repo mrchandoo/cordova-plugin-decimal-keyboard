@@ -32,6 +32,8 @@ Input type number will not work, try to use text with [0-9] pattern instead.
 If you want to localize decimal character, you can change using decimal-char attribute  
 <img src=https://github.com/mrchandoo/cordova-plugin-decimal-keyboard/blob/master/screenshots/Different%20Decimal%20Char.PNG width=25% height=25% />
 
+## Known Issues
+* The decimal button is hidden when app moves to pause and resumes
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
