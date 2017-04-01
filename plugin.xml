@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-decimal-keyboard" version="1.0">
+    <name>Decimal Keyboard</name>
+    <description>Cordova Decimal Keyboard Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,keyboard, decimal keyboard</keywords>
+
+    <engines>
+	<engine name="cordova" version=">=3.2.0" />
+    </engines>
+
+    <js-module src="www/decimal-keyboard.js" name="decimalKeyboard">
+    	<clobbers target="window.DecimalKeyboard" />
+    </js-module>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="DecimalKeyboard">
+                <param name="ios-package" value="CDVDecimalKeyboard" onload="true" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/CDVDecimalKeyboard.h" />
+        <source-file src="src/ios/CDVDecimalKeyboard.m" />
+    </platform>
+</plugin>
