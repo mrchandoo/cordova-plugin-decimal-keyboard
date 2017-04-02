@@ -34,4 +34,4 @@ If you want to localize decimal character, you can change using decimal-char att
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
