@@ -1,7 +1,7 @@
-cordova.define("cordova-plugin-decimal-keyboard.decimalKeyboard", function(require, exports, module) { 
-	var argscheck = require('cordova/argscheck'),
-    utils = require('cordova/utils'),
-    exec = require('cordova/exec');
+
+var argscheck = require('cordova/argscheck'),
+utils = require('cordova/utils'),
+exec = require('cordova/exec');
    
 var DecimalKeyboard = function() {
 	
@@ -64,4 +64,3 @@ DecimalKeyboard.addDecimal = function(){
 
 
 module.exports = DecimalKeyboard;
-});
