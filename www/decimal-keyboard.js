@@ -1,4 +1,3 @@
-
 var argscheck = require('cordova/argscheck'),
 utils = require('cordova/utils'),
 exec = require('cordova/exec');
@@ -35,6 +34,9 @@ DecimalKeyboard.getDecimalChar = function(activeElement){
 	}
 	return decimalChar;
 };
+DecimalKeyboard.addDecimalAtPos = function(val,position){
+
+};
 DecimalKeyboard.addDecimal = function(){
 	var activeElement = document.activeElement;
 	var allowMultipleDecimals = true;
@@ -46,19 +48,28 @@ DecimalKeyboard.addDecimal = function(){
 	var value = activeElement.value;
 	var valueToSet = '';
 	var decimalChar = DecimalKeyboard.getDecimalChar(activeElement);
-	if(value.length==0)
-		valueToSet = '0' + decimalChar;
-	else{
-		if(allowMultipleDecimals)
-			valueToSet = value + decimalChar;
+	var caretPosStart = activeElement.selectionStart;
+	var caretPosEnd = activeElement.selectionEnd;
+	var first='';
+	var last='';
+	
+	first = value.substring(0, caretPosStart);
+	last = value.substring(caretPosEnd);
+
+	if(allowMultipleDecimals){
+		valueToSet = first+decimalChar+last;
+	}else{
+		if(value.indexOf('.') > -1)
+			return;
 		else{
-			if(value.indexOf(decimalChar) == -1){
-				valueToSet = value+decimalChar;
-			}else{
-				valueToSet = value;
+			if(caretPosStart==0){
+				first='0';
 			}
+			valueToSet = first+decimalChar+last;
+
 		}
 	}
+
     activeElement.value = valueToSet;
 };
 
