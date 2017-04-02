@@ -8,7 +8,7 @@ UIView* ui;
 CGRect cgButton;
 BOOL isDecimalKeyRequired=YES;
 UIButton *decimalButton;
-
+BOOL isAppInBackground=NO;
 - (void)pluginInitialize {
     wv = self.webView;
     [[NSNotificationCenter defaultCenter] addObserver: self
@@ -19,7 +19,28 @@ UIButton *decimalButton;
                                              selector: @selector(keyboardWillDisappear:)
                                                  name: UIKeyboardWillHideNotification
                                                object: nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appWillResignActive:)
+                                                 name:UIApplicationWillResignActiveNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appDidBecomeActive:)
+                                                 name:UIApplicationDidBecomeActiveNotification
+                                               object:nil];
 
+
+}
+- (void) appWillResignActive: (NSNotification*) n{
+    isAppInBackground = YES;
+    [self removeDecimalButton];
+}
+
+- (void) appDidBecomeActive: (NSNotification*) n{
+    if(isAppInBackground==YES){
+        isAppInBackground = NO;
+        [self processKeyboardShownEvent];
+
+    }
 }
 
 
@@ -81,10 +102,12 @@ BOOL isDifferentKeyboardShown=NO;
     NSDictionary* info = [n userInfo];
     NSNumber* value = [info objectForKey:UIKeyboardAnimationDurationUserInfoKey];
     double dValue = [value doubleValue];
+    
     if(dValue <= 0.0){
         [self removeDecimalButton];
         return;
     }
+    
     dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 0.25);
     dispatch_after(delay, dispatch_get_main_queue(), ^(void){
         [self processKeyboardShownEvent];
