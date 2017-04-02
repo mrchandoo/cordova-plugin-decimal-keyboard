@@ -169,15 +169,22 @@ BOOL stopSearching=NO;
         }
         if([[subview description] hasPrefix:@"<UIKBKeyplaneView"] == YES){
             ui = subview;
-            int count=0;
+            //CGRect cg = CGRectMake(-2, ui.frame.size.height- ui.frame., <#CGFloat width#>, <#CGFloat height#>)
             stopSearching = YES;
+            CGFloat height= 0.0;
+            CGFloat width=0.0;
+            CGFloat x = -2;
+            CGFloat y =ui.frame.size.height;
             for(UIView *nView in ui.subviews){
                 
                 if([[nView description] hasPrefix:@"<UIKBKeyView"] == YES){
-                    count++;
-                    if(count == 10){
-                        cgButton = CGRectMake(nView.frame.origin.x-2, nView.frame.origin.y+1, nView.frame.size.width, nView.frame.size.height);
-                    }
+                    //all keys of same size;
+                    height = nView.frame.size.height;
+                    width = nView.frame.size.width;
+                    y = y-height;
+                    cgButton = CGRectMake(x, y, width, height);
+                    break;
+                    
                 }
                 
             }
