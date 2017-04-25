@@ -82,6 +82,16 @@ BOOL isAppInBackground=NO;
         }
     }
     
+    if(tempWindow ==nil){
+        //for ios 8
+        for(UIWindow* object in openWindows){
+            if([[object description] hasPrefix:@"<UITextEffectsWindow"] == YES){
+                tempWindow = object;
+            }
+        }
+    }
+
+    
     UIView* keyboard;
     for(int i=0; i<[tempWindow.subviews count]; i++) {
         keyboard = [tempWindow.subviews objectAtIndex:i];
@@ -113,7 +123,7 @@ BOOL isDifferentKeyboardShown=NO;
         return;
     }
     
-    dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 0.25);
+    dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * dValue);
     dispatch_after(delay, dispatch_get_main_queue(), ^(void){
         [self processKeyboardShownEvent];
     });
