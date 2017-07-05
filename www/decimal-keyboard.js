@@ -59,7 +59,7 @@ DecimalKeyboard.addDecimal = function(){
 	if(allowMultipleDecimals){
 		valueToSet = first+decimalChar+last;
 	}else{
-		if(value.indexOf('.') > -1)
+		if(value.indexOf(decimalChar) > -1)
 			return;
 		else{
 			if(caretPosStart==0){
