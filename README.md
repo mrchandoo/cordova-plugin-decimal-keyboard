@@ -10,7 +10,7 @@ cordova plugin add https://github.com/mrchandoo/cordova-plugin-decimal-keyboard.
 ## Usage
 
 ```
-<input type="text" pattern="[0-9]*" decimal="true">
+<input type="text" pattern="[0-9]*" data-decimal="true">
 ```
 Input type number will not work, try to use text with [0-9] pattern instead.
 
@@ -20,14 +20,14 @@ Input type number will not work, try to use text with [0-9] pattern instead.
 ### Multiple decimals
 
 ```
-<input type="text" pattern="[0-9]*" decimal="true" allow-multiple-decimals="true">
+<input type="text" pattern="[0-9]*" data-decimal="true" data-allow-multiple-decimals="true">
 ```
 <img src=https://github.com/mrchandoo/cordova-plugin-decimal-keyboard/blob/master/screenshots/Multiple%20Decimals.PNG width=25% height=25% />
 
 ### Different decimal character
 
 ```
-<input type="text" pattern="[0-9]*" decimal="true" allow-multiple-decimals="false" decimal-char=",">
+<input type="text" pattern="[0-9]*" data-decimal="true" data-allow-multiple-decimals="false" decimal-char=",">
 ```
 If you want to localize decimal character, you can change using decimal-char attribute  
 <img src=https://github.com/mrchandoo/cordova-plugin-decimal-keyboard/blob/master/screenshots/Different%20Decimal%20Char.PNG width=25% height=25% />

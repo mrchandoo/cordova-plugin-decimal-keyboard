@@ -11,9 +11,9 @@ DecimalKeyboard.getActiveElementType= function(){
 DecimalKeyboard.isDecimal = function(){
 	var showDecimal = null;
 	var activeElement = document.activeElement;
-	if(activeElement.attributes["decimal"]==undefined || 
-		activeElement.attributes["decimal"]=='undefined' || 
-		activeElement.attributes["decimal"].value=='false'){
+	if(activeElement.attributes["data-decimal"]==undefined || 
+		activeElement.attributes["data-decimal"]=='undefined' || 
+		activeElement.attributes["data-decimal"].value=='false'){
 		showDecimal = false;
 	}else{
 		showDecimal = true;
@@ -26,11 +26,11 @@ DecimalKeyboard.getDecimalChar = function(activeElement){
 		activeElement = document.activeElement;
 
 	var decimalChar = null;
-	if(activeElement.attributes["decimal-char"]==undefined || 
-		activeElement.attributes["decimal-char"]=='undefined'){
+	if(activeElement.attributes["data-decimal-char"]==undefined || 
+		activeElement.attributes["data-decimal-char"]=='undefined'){
 		decimalChar='.'
 	}else{
-		decimalChar=activeElement.attributes["decimal-char"].value;
+		decimalChar=activeElement.attributes["data-decimal-char"].value;
 	}
 	return decimalChar;
 };
@@ -40,9 +40,9 @@ DecimalKeyboard.addDecimalAtPos = function(val,position){
 DecimalKeyboard.addDecimal = function(){
 	var activeElement = document.activeElement;
 	var allowMultipleDecimals = true;
-	if(activeElement.attributes["allow-multiple-decimals"]==undefined || 
-		activeElement.attributes["allow-multiple-decimals"]=='undefined' || 
-		activeElement.attributes["allow-multiple-decimals"].value=='false'){
+	if(activeElement.attributes["data-allow-multiple-decimals"]==undefined || 
+		activeElement.attributes["data-allow-multiple-decimals"]=='undefined' || 
+		activeElement.attributes["data-allow-multiple-decimals"].value=='false'){
 		allowMultipleDecimals = false;
 	}
 	var value = activeElement.value;
