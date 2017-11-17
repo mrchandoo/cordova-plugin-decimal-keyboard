@@ -59,7 +59,7 @@ BOOL isAppInBackground=NO;
     decimalButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self setDecimalChar];
     [decimalButton setTitleColor:[UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1.0] forState:UIControlStateNormal];
-    decimalButton.titleLabel.font = [UIFont systemFontOfSize:40.0];
+    decimalButton.titleLabel.font = [UIFont systemFontOfSize:30.0];
     [decimalButton addTarget:self action:@selector(buttonPressed:)
             forControlEvents:UIControlEventTouchUpInside];
     [decimalButton addTarget:self action:@selector(buttonTapped:)
