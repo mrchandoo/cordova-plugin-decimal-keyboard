@@ -2,6 +2,11 @@
 
 @implementation CDVDecimalKeyboard
 
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
 UIWebView* wv;
 UIView* ui;
@@ -212,14 +217,16 @@ BOOL stopSearching=NO;
 }
 
 - (void) addDecimalToKeyboard:(CDVInvokedUrlCommand*)command {
-    if (@available(iOS 11, *)) {
+    if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"11"))
+    {
         [self processKeyboardShownEvent];
     }
     
 }
 
 - (void) removeDecimalFromKeyboard:(CDVInvokedUrlCommand*)command {
-    if (@available(iOS 11, *)) {
+    if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"11"))
+    {
         if(decimalButton)
         [self removeDecimalButton];
     }
