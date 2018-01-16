@@ -211,6 +211,20 @@ BOOL stopSearching=NO;
     }
 }
 
+- (void) addDecimalToKeyboard:(CDVInvokedUrlCommand*)command {
+    if (@available(iOS 11, *)) {
+        [self processKeyboardShownEvent];
+    }
+    
+}
+
+- (void) removeDecimalFromKeyboard:(CDVInvokedUrlCommand*)command {
+    if (@available(iOS 11, *)) {
+        if(decimalButton)
+        [self removeDecimalButton];
+    }
+}
+
 
 @end
 

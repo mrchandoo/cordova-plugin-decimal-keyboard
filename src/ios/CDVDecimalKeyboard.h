@@ -4,6 +4,7 @@
 @interface CDVDecimalKeyboard : CDVPlugin <UIScrollViewDelegate> {
 
 }
-
+- (void) addDecimalToKeyboard:(CDVInvokedUrlCommand*)command;
+- (void) removeDecimalFromKeyboard:(CDVInvokedUrlCommand*)command;
 @end
 

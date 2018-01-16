@@ -73,5 +73,13 @@ DecimalKeyboard.addDecimal = function(){
     activeElement.value = valueToSet;
 };
 
+DecimalKeyboard.addDecimalToKeyboard = function(successCallback, errorCallback){
+    exec(successCallback, errorCallback, "DecimalKeyboard", "addDecimalToKeyboard", []);
+};
+               
+DecimalKeyboard.removeDecimalFromKeyboard = function(successCallback, errorCallback){
+    exec(successCallback, errorCallback, "DecimalKeyboard", "removeDecimalFromKeyboard", []);
+};
+
 
 module.exports = DecimalKeyboard;

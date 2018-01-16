@@ -32,6 +32,10 @@ Input type number will not work, try to use text with [0-9] pattern instead.
 If you want to localize decimal character, you can change using decimal-char attribute  
 <img src=https://github.com/mrchandoo/cordova-plugin-decimal-keyboard/blob/master/screenshots/Different%20Decimal%20Char.PNG width=25% height=25% />
 
+Two functions are added because iOS 11 does not trigger keyboard events when you change between two fields with the same keyboard type. You should use this functions on focus/blur of the fields respectively:
+- addDecimalToKeyboard()
+- removeDecimalFromKeyboard();
+
 ## Known Issues
 * Does not handle screen rotation.
 ## License
