@@ -1,0 +1,24 @@
+{
+  "name": "cordova-plugin-decimal-keyboard",
+  "version": "1.0.0",
+  "description": "Plugin to display decimal keyboard on Cordova and Phonegap applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrchandoo/cordova-plugin-decimal-keyboard.git"
+  },
+  "keywords": [
+    "cordova",
+    "decimal",
+    "keypad"
+  ],
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/mrchandoo/cordova-plugin-decimal-keyboard/issues"
+  },
+  "homepage": "https://github.com/mrchandoo/cordova-plugin-decimal-keyboard#readme"
+}
