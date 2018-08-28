@@ -1,11 +1,14 @@
 # cordova-plugin-decimal-keyboard
 
-Cordova plugin to show decimal keyboard on iPhones
+Cordova plugin to show decimal keyboard on iPhones forked from mrchandoo/cordova-plugin-decimal-keyboard
+
+I was getting ng-pattern error(removed the pattern attribute to invoke the decimal keyboard), so just set the input to tel and add decimal=true to invoke the decimal keyboard
 
 ### Installing
 
 ```
-cordova plugin add https://github.com/mrchandoo/cordova-plugin-decimal-keyboard.git
+cordova plugin add https://github.com/msd117/cordova-plugin-decimal-keyboard.git
+
 ```
 ## Usage
 
