@@ -95,13 +95,15 @@ BOOL isAppInBackground=NO;
             }
         }
     }
-
+    
     
     UIView* keyboard;
     for(int i=0; i<[tempWindow.subviews count]; i++) {
         keyboard = [tempWindow.subviews objectAtIndex:i];
         [self listSubviewsOfView: keyboard];
         decimalButton.frame = cgButton;
+        decimalButton.layer.cornerRadius = 4.0f;
+        
         [ui addSubview:decimalButton];
     }
 }
@@ -195,15 +197,16 @@ BOOL stopSearching=NO;
             stopSearching = YES;
             CGFloat height= 0.0;
             CGFloat width=0.0;
-            CGFloat x = 0;
+            CGFloat x = 7;
             CGFloat y =ui.frame.size.height;
+            
             for(UIView *nView in ui.subviews){
                 
                 if([[nView description] hasPrefix:@"<UIKBKeyView"] == YES){
                     //all keys of same size;
-                    height = nView.frame.size.height;
-                    width = nView.frame.size.width-1.5;
-                    y = y-(height-1);
+                    height = nView.frame.size.height-9;
+                    width = nView.frame.size.width-8;
+                    y = (3*nView.frame.size.height)+4;
                     cgButton = CGRectMake(x, y, width, height);
                     break;
                     
@@ -228,7 +231,7 @@ BOOL stopSearching=NO;
     if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"11"))
     {
         if(decimalButton)
-        [self removeDecimalButton];
+            [self removeDecimalButton];
     }
 }
 
