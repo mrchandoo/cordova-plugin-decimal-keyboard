@@ -168,7 +168,7 @@ BOOL isDifferentKeyboardShown=NO;
 - (void) isTextAndDecimal:(void (^)(BOOL isTextAndDecimal))completionHandler {
     [self evaluateJavaScript:@"DecimalKeyboard.getActiveElementType();"
            completionHandler:^(NSString * _Nullable response, NSError * _Nullable error) {
-               BOOL isText = [response isEqual:@"text"];
+               BOOL isText = [response isEqual:@"tel"];
                
                if (isText) {
                    [self evaluateJavaScript:@"DecimalKeyboard.isDecimal();"
