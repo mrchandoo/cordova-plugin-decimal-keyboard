@@ -63,7 +63,17 @@ BOOL isAppInBackground=NO;
     }
     decimalButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self setDecimalChar];
-    [decimalButton setTitleColor:[UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1.0] forState:UIControlStateNormal];
+    
+    if (@available(iOS 13.0, *)) {
+        if (UITraitCollection.currentTraitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+            [decimalButton setTitleColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0] forState:UIControlStateNormal];
+        } else {
+            [decimalButton setTitleColor:[UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1.0] forState:UIControlStateNormal];
+        }
+    } else {
+        [decimalButton setTitleColor:[UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:1.0] forState:UIControlStateNormal];
+    }
+    
     decimalButton.titleLabel.font = [UIFont systemFontOfSize:40.0];
     [decimalButton addTarget:self action:@selector(buttonPressed:)
             forControlEvents:UIControlEventTouchUpInside];
@@ -74,8 +84,7 @@ BOOL isAppInBackground=NO;
     
     
     decimalButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    [decimalButton setTitleEdgeInsets:UIEdgeInsetsMake(-20.0f, 0.0f, 0.0f, 0.0f)];
-    [decimalButton setBackgroundColor: [UIColor colorWithRed:210/255.0 green:213/255.0 blue:218/255.0 alpha:1.0]];
+    [decimalButton setTitleEdgeInsets:UIEdgeInsetsMake(-30.0f, 0.0f, 0.0f, 0.0f)];
     
     // locate keyboard view
     UIWindow* tempWindow = nil;
@@ -154,12 +163,10 @@ BOOL isDifferentKeyboardShown=NO;
 }
 
 - (void)buttonPressed:(UIButton *)button {
-    [decimalButton setBackgroundColor: [UIColor colorWithRed:210/255.0 green:213/255.0 blue:218/255.0 alpha:1.0]];
     [self evaluateJavaScript:@"DecimalKeyboard.addDecimal();" completionHandler:nil];
 }
 
 - (void)buttonTapped:(UIButton *)button {
-    [decimalButton setBackgroundColor: [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0]];
 }
 - (void)buttonPressCancel:(UIButton *)button{
     [decimalButton setBackgroundColor: [UIColor colorWithRed:210/255.0 green:213/255.0 blue:218/255.0 alpha:1.0]];
@@ -224,14 +231,7 @@ BOOL stopSearching=NO;
 
 - (void) evaluateJavaScript:(NSString *)script
           completionHandler:(void (^ _Nullable)(NSString * _Nullable response, NSError * _Nullable error))completionHandler {
-
-    if ([self.webView isKindOfClass:UIWebView.class]) {
-        UIWebView *webview = (UIWebView*)self.webView;
-        NSString *response = [webview stringByEvaluatingJavaScriptFromString:script];
-        if (completionHandler) completionHandler(response, nil);
-    }
-    
-    else if ([self.webView isKindOfClass:WKWebView.class]) {
+    if ([self.webView isKindOfClass:WKWebView.class]) {
         WKWebView *webview = (WKWebView*)self.webView;
         [webview evaluateJavaScript:script completionHandler:^(id result, NSError *error) {
             if (completionHandler) {
