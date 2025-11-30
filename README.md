@@ -1,4 +1,4 @@
-# cordova-plugin-decimal-keyboard
+# cordova-plugin-decimal-keyboard [DEPRECATED]
 
 Cordova plugin to show decimal keyboard on iPhones
 
